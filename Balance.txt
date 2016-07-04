@@ -1,0 +1,33 @@
+public class Balance {
+	
+	void checkBalance(String str)
+	{
+		String stack="";
+		for(int j=0;j<str.length();j++)
+		{
+			if(stack.length()==0)
+				stack = stack + str.charAt(j);
+			else
+			{
+				if((stack.charAt(stack.length()-1)=='{'&&str.charAt(j)=='}')||(stack.charAt(stack.length()-1)=='['&&str.charAt(j)==']')||(stack.charAt(stack.length()-1)=='('&&str.charAt(j)==')'))
+					stack = pop(stack);
+				else
+					stack = push(str.charAt(j),stack);
+			}
+		}
+		if(stack.length()==0)
+				System.out.println("Yes");
+		else
+			System.out.println("No");
+
+	}
+	public String push(char charAt,String stack)
+	{
+		return (stack+charAt);
+	}
+	
+	public String pop(String stack)
+	{
+		return stack.substring(0, stack.length()-1);
+	}
+}
